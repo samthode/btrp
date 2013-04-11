@@ -2,10 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-group :development do
+group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.9.0'
   gem 'guard-rspec', '0.5.5'
+  gem 'guard-cucumber'
 end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -16,6 +17,8 @@ end
 gem 'jquery-rails'
 
 group :test do
+  gem 'cucumber'
+  gem 'cucumber-rails', :require => false
   gem 'rspec-rails', '2.9.0'
   gem 'capybara', '1.1.2'
   gem 'rb-fchange', '0.0.5'
@@ -26,6 +29,7 @@ group :test do
   gem 'spork', '0.9.0'
   gem 'childprocess'
   gem 'sys-proctable'
+  gem 'database_cleaner'
 end
 
 group :production do

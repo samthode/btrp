@@ -1,0 +1,36 @@
+	<div>
+		<%= form_for(@user) do |f| %>
+
+			<%= f.label :rank %>
+			<%= f.text_field :rank %>
+
+			<%= f.label :'first name' %>
+			<%= f.text_field :firstName %>
+
+			<%= f.label :'last name' %>
+			<%= f.text_field :lastName %>
+
+			<%= f.label :'middle Initial' %>
+			<%= f.text_field :middleInitial %>
+
+			<%= f.label :'Date of Birth' %>
+			<%= f.text_field :dateOfBirth %>
+
+			<%= f.label :MOS %>
+			<%= f.text_field :MOS %>
+
+			<%= f.label :'ETS/PCS Date' %>
+			<%= f.text_field :ets_pcsDate %>
+
+			<%= f.label :'Phone Number' %>
+			<%= f.text_field :phoneNum %>
+
+			<%= f.label :address %>
+			<%= f.text_field :address %>			
+
+			<%= f.submit "Sign up" %>
+		<% end %>
+	</div>
+
+<h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>

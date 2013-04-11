@@ -1,6 +1,6 @@
 require 'active_support\core_ext'
 
-guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' }, :wait => 50 do
+guard 'spork', :cucumber_env => {  'RAILS_ENV' => 'test'  }, :rspec_env => { 'RAILS_ENV' => 'test' }, :wait => 50 do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch(%r{^config/environments/.+\.rb$})
@@ -16,15 +16,6 @@ guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
-
-  # Rails example
-  watch(%r{^spec/.+_spec\.rb$})
-
-  watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
-
-  watch(%r{^app/(.*)(\.erb|\.haml)$})                 { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
-
-  watch(%r{^lib/(.+)\.rb$})                           { |m| "spec/lib/#{m[1]}_spec.rb" }
 
   watch(%r{^app/controllers/(.+)_(controller)\.rb$}) do |m| 
   ["spec/routing/#{m[1]}_routing_spec.rb",
@@ -48,3 +39,9 @@ guard 'rspec', :version => 2, :all_after_pass => false, :cli => '--drb' do
 end
 
 
+
+guard 'cucumber' do
+  watch(%r{^features/.+\.feature$})
+  watch(%r{^features/support/.+$})          { 'features' }
+  watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
+end
